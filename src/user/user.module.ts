@@ -4,9 +4,16 @@ import { UserController } from './user.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { WalletModule } from 'src/wallet/wallet.module';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User]), WalletModule],
+  imports: [
+    TypeOrmModule.forFeature([User]),
+    WalletModule,
+    JwtModule.register({
+      secret: 'YOUR_SECRET_KEY', // 시크릿 키 아무거나
+    }),
+  ],
   controllers: [UserController],
   providers: [UserService],
 })

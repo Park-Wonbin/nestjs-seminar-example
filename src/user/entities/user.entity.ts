@@ -24,6 +24,12 @@ export class User {
   @Column({ unique: true })
   email: string;
 
+  @Column()
+  encryptedPassword: string;
+
+  @Column()
+  cryptoSalt: string;
+
   @CreateDateColumn()
   createdAt: Date;
 
